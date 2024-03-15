@@ -109,13 +109,14 @@ textarea:not([rows]) {
     grid-gap:10px;
 }
 
-input{
+#inputField{
     grid-column-start: 1;
     grid-column-end: 5;
     border-radius: 20px;
-    padding:10px;
+    border:black 3px solid;
     text-align: end;
     font-size: 30px;
+    background: white;
 }
 
 .c-button{
