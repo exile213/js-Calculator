@@ -1,3 +1,10 @@
+//VARIABLES
+num1 =33;
+num2 = 43;
+operator = '+'
+
+operate(num1,num2,operator);
+
 function operate(num1,num2,operator) {
 
     switch(operator){
@@ -32,4 +39,4 @@ function divide(num1,num2){
     return num1/num2;
 }
 
-operate(21,33,'*');
+console.log("232" +"3444");

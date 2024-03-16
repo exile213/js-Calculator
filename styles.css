@@ -114,6 +114,7 @@ textarea:not([rows]) {
     grid-column-end: 5;
     border-radius: 20px;
     border:black 3px solid;
+    padding:10px;
     text-align: end;
     font-size: 30px;
     background: white;
