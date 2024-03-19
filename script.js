@@ -1,8 +1,22 @@
 //VARIABLES
-num1 =33;
-num2 = 43;
-operator = '+'
+let num1 =33;
+let num2 = 43;
+let operator = '+';
+let displayVal="";
+let inputText = document.getElementById('inputText');
+let calcButton = document.querySelectorAll('.buttons');
+//EVENT LISTENERS
+    for(let i=0; i<calcButton.length;i++){
+        calcButton[i].addEventListener('click',function () {
+           displayVal += calcButton[i].value;
+           inputText.textContent = displayVal;
+       });
+    }
+  /*  calcButton[i].addEventListener('click',function () {
+        console.log(calcButton[i].value);
+   });*/
 
+//FUNCTIONS
 operate(num1,num2,operator);
 
 function operate(num1,num2,operator) {
