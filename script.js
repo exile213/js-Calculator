@@ -10,8 +10,9 @@ let resNum = false;
 
 //HTML ELEMENT VARIABLES
 let inputText = document.getElementById('inputText');
-let numButton = document.querySelectorAll('.buttons');
+let numButton = document.querySelectorAll('.num-buttons');
 let opButton = document.querySelectorAll('.op-buttons');
+let clearButton  = document.getElementById("clearButton");
 
 
 //NUMBERS EVENT LISTENERS
@@ -36,7 +37,7 @@ let opButton = document.querySelectorAll('.op-buttons');
     }
 
 
-    //OPERATION BUTTONS EVENT LISTENERS
+//OPERATION BUTTONS EVENT LISTENERS
     for(let i=0; i<opButton.length;i++){
         opButton[i].addEventListener('click',function () {
             if(state=="firstNum"){
@@ -71,6 +72,24 @@ let opButton = document.querySelectorAll('.op-buttons');
             }
        });
     }
+
+
+//CLEAR BUTTON EVENT LISTENER
+    clearButton.addEventListener('click',function(){
+        //Resets everything
+         num1 ='';
+         num2 ='';
+         operator = '';
+         inputText.textContent ='';
+         displayArray=[];
+         displayVal="";
+        state="firstNum";
+        resNum = false;
+    });
+
+
+
+
 
 //FUNCTIONS
 function operate(num1,num2,operator) {

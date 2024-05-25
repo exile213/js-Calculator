@@ -125,7 +125,7 @@ textarea:not([rows]) {
     grid-column-end: 5;
 
 }
-.buttons{
+.num-buttons,.clear-button,.op-buttons{
     background: rgb(226, 225, 225);
     border-radius: 20px;
     font-size: 30px;
@@ -134,11 +134,3 @@ textarea:not([rows]) {
     height: 60px;
 }
 
-.op-buttons{
-  background: rgb(226, 225, 225);
-  border-radius: 20px;
-  font-size: 30px;
-  padding:10px;
-  width:60px;
-  height: 60px;
-}
