@@ -1,6 +1,7 @@
 //VARIABLES
-let numArray=[];
+let num1,num2;
 let operator = '';
+let displayArray=[];
 let displayVal="";
 
 //STATE VARIABLES
@@ -39,23 +40,33 @@ let opButton = document.querySelectorAll('.op-buttons');
     for(let i=0; i<opButton.length;i++){
         opButton[i].addEventListener('click',function () {
             if(state=="firstNum"){
-                numArray.push(displayVal);
+
+                //assigns the value of first number and pushes into array
+                num1 = displayVal;
+                displayArray.push(displayVal);
+
+                //displays operator and pushes into array
                 displayVal = opButton[i].value;
                 operator = opButton[i].value;
                 inputText.textContent = displayVal;
                 state="secondNum";
                 resNum=true;
-                numArray.push(displayVal);
+                displayArray.push(displayVal);
             }
 
             if(state=="secondNum" && resNum ==false){
-                numArray.push(displayVal);
-                alert(numArray);
+
+                //assigns the value of second number, pushes into array, performs operation
+                num2 = displayVal
+                displayArray.push(displayVal);
+                alert(operate(num1,num2,operator)); 
+
+                //assigns and displays  next operator
                 displayVal = opButton[i].value;
                 operator = opButton[i].value;
                 inputText.textContent = displayVal;
                 state ="firstNum";
-                numArray.push(displayVal);
+                displayArray.push(displayVal);
 
             }
        });
@@ -64,35 +75,38 @@ let opButton = document.querySelectorAll('.op-buttons');
 //FUNCTIONS
 function operate(num1,num2,operator) {
 
+    let result; 
     switch(operator){
         case '+':
-            console.log(add(num1,num2));
+            result = add(num1,num2);
             break;
         
         case '-':
-            console.log(subtract(num1,num2));
+            result = subtract(num1,num2);
             break;
         case '*':
-            console.log(multiply(num1,num2));
+            result = multiply(num1,num2);
             break;
             
         case '/':
-            console.log(divide(num1,num2));
+            result = divide(num1,num2);
             break;
 
     }
+
+    return result;
 }
 
 function add(num1,num2){
-    return num1+num2;
+    return parseInt(num1)+parseInt(num2);
 }
 function subtract(num1,num2){
-    return num1-num2;
+    return parseInt(num1)-parseInt(num2);
 }
 function multiply(num1,num2){
-    return num1*num2;
+    return parseInt(num1)*parseInt(num2);
 }
 function divide(num1,num2){
-    return num1/num2;
+    return parseInt(num1)/parseInt(num2);
 }
  
