@@ -77,8 +77,8 @@ textarea:not([rows]) {
 /*RESET ENDS HERE*/
 
 .calcuContainer{
-    width:320px;
-    height:500px;
+    width:350px;
+    height:550px;
     background:rgb(248, 194, 124);
     border: black 2px solid;
     border-radius: 20px;
@@ -104,21 +104,33 @@ textarea:not([rows]) {
     width: 100%;
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat(4,60px);/*creates a 4 column grid with equal size 50px -emil*/
-    grid-template-rows: repeat(5,60px);/*creats a 5 row grid with equal size 100px -emil*/
+    grid-template-columns: repeat(4,70px);/*creates a 4 column grid with equal size 50px -emil*/
+    grid-template-rows: repeat(5,70px);/*creats a 5 row grid with equal size 100px -emil*/
     grid-gap:10px;
 }
 
-#inputField{
+.inputField{
     grid-column-start: 1;
     grid-column-end: 5;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+    height: 70px;
     border-radius: 20px;
     border:black 3px solid;
     padding:10px;
     text-align: end;
-    font-size: 30px;
     background: white;
 }
+
+#inputText{
+  padding-top:1;
+  text-align: end;
+  font-size: 20px;
+  color:black;
+  font-weight: bold;
+}
+
 
 .c-button{
     grid-column-start: 1;
