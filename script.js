@@ -56,17 +56,18 @@ let clearButton  = document.getElementById("clearButton");
                 resNum=true;
             }
 
-            if(state==3 && resNum ==false){
+            if(state==3){
 
-                num2 = displayVal;
-                num1 = operate(num1,num2,operator);
-                inputText.textContent = num1;
-
-
-                displayVal = opButton[i].value;
-                operator = opButton[i].value;
-                resNum=true
-
+                if(resNum ==false){
+                    num2 = displayVal;
+                    num1 = operate(num1,num2,operator);
+                    inputText.textContent = num1;
+                }
+                if(opButton !="="){
+                    displayVal = opButton[i].value;
+                    operator = opButton[i].value;
+                    resNum = true;
+                }
             }
        });
     }
