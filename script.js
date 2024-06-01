@@ -5,7 +5,7 @@ let displayArray=[];
 let displayVal="";
 
 //STATE VARIABLES
-let state="firstNum";
+let state=0;
 let resNum = false;
 
 //HTML ELEMENT VARIABLES
@@ -20,16 +20,21 @@ let clearButton  = document.getElementById("clearButton");
         numButton[i].addEventListener('click',function () {
 
             if(resNum){
+                operator = displayVal
                 displayVal ="";
                 inputText.textContent ="";
                 resNum = false;
+                state=3;
             }
-            if(state=="firstNum"){
+            if(state==0){
+                state =1
+            }
+            if(state==1){
                 displayVal += numButton[i].value;
                 inputText.textContent = displayVal;
             }
 
-            if(state=="secondNum"){
+            if(state==3){
                 displayVal += numButton[i].value;
                 inputText.textContent = displayVal;
             }
@@ -40,34 +45,27 @@ let clearButton  = document.getElementById("clearButton");
 //OPERATION BUTTONS EVENT LISTENERS
     for(let i=0; i<opButton.length;i++){
         opButton[i].addEventListener('click',function () {
-            if(state=="firstNum"){
-
-                //assigns the value of first number and pushes into array
+            if(state==1){
                 num1 = displayVal;
-                displayArray.push(displayVal);
-
-                //displays operator and pushes into array
+                state=2;
+            }
+            if(state == 2){
                 displayVal = opButton[i].value;
                 operator = opButton[i].value;
                 inputText.textContent = displayVal;
-                state="secondNum";
                 resNum=true;
-                displayArray.push(displayVal);
             }
 
-            if(state=="secondNum" && resNum ==false){
+            if(state==3 && resNum ==false){
 
-                //assigns the value of second number, pushes into array, performs operation
-                num2 = displayVal
-                displayArray.push(displayVal);
-                alert(operate(num1,num2,operator)); 
+                num2 = displayVal;
+                num1 = operate(num1,num2,operator);
+                inputText.textContent = num1;
 
-                //assigns and displays  next operator
+
                 displayVal = opButton[i].value;
                 operator = opButton[i].value;
-                inputText.textContent = displayVal;
-                state ="firstNum";
-                displayArray.push(displayVal);
+                resNum=true
 
             }
        });
