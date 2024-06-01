@@ -157,7 +157,13 @@ function multiply(num1,num2){
     return result.toFixed(2);
 }
 function divide(num1,num2){
-    result = parseFloat(num1)/parseFloat(num2);
-    return result.toFixed(2);
+    if(num2 ==0){
+        alert("Nice try dumboo, you cant by  0");
+        return"RESTART, DONT TRY DIVING BY 0";
+    }else{
+        result = parseFloat(num1)/parseFloat(num2);
+        return result.toFixed(2);
+
+    }
 }
  
