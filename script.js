@@ -13,7 +13,7 @@ let inputText = document.getElementById('inputText');
 let numButton = document.querySelectorAll('.num-buttons');
 let opButton = document.querySelectorAll('.op-buttons');
 let clearButton  = document.getElementById("clearButton");
-
+let delButton = document.getElementById("delButton");
 
 //NUMBERS EVENT LISTENERS
     for(let i=0; i<numButton.length;i++){
@@ -82,12 +82,19 @@ let clearButton  = document.getElementById("clearButton");
          inputText.textContent ='';
          displayArray=[];
          displayVal="";
-        state="firstNum";
-        resNum = false;
+         state=0;
+         resNum = false;
     });
 
+//DELETE BUTTON EVENT LISTENER
+    delButton.addEventListener("click",function(){ 
+        let currentText = inputText.textContent;
+        // Remove the last character
+        currentText = currentText.slice(0, -1);
 
-
+        inputText.textContent = currentText;
+        displayVal = inputText.textContent;
+     })
 
 
 //FUNCTIONS
@@ -116,15 +123,15 @@ function operate(num1,num2,operator) {
 }
 
 function add(num1,num2){
-    return parseInt(num1)+parseInt(num2);
+    return parseFloat(num1)+parseFloat(num2);
 }
 function subtract(num1,num2){
-    return parseInt(num1)-parseInt(num2);
+    return parseFloat(num1)-parseFloat(num2);
 }
 function multiply(num1,num2){
-    return parseInt(num1)*parseInt(num2);
+    return parseFloat(num1)*parseFloat(num2);
 }
 function divide(num1,num2){
-    return parseInt(num1)/parseInt(num2);
+    return parseFloat(num1)/parseFloat(num2);
 }
  
