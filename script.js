@@ -17,81 +17,41 @@ let opButton = document.querySelectorAll('.op-buttons');
 let clearButton  = document.getElementById("clearButton");
 let delButton = document.getElementById("delButton");
 
-//NUMBERS EVENT LISTENERS
+//NUMBER BUTTONS CLICK EVENT LISTENERS
     for(let i=0; i<numButton.length;i++){
         numButton[i].addEventListener('click',function () {
-
-            if(resNum){
-                operator = displayVal
-                displayVal ="";
-                inputText.textContent ="";
-                resNum = false;
-                oneDeci=false;
-                state=3;
-            }
-            if(state==0){
-                state =1
-            }
-            if(state==1){
-                //only allows one decimal point
-                if(numButton[i].value =="."){
-                    if(oneDeci ==false){
-                        displayVal += numButton[i].value;
-                        inputText.textContent = displayVal;
-                        oneDeci = true;
-                    }
-                }else{
-                    displayVal += numButton[i].value;
-                    inputText.textContent = displayVal;
-                }
-            }
-
-            if(state==3){
-                //only allows one decimal point
-                if(numButton[i].value =="."){
-                    if(oneDeci ==false){
-                        displayVal += numButton[i].value;
-                        inputText.textContent = displayVal;
-                        oneDeci = true;
-                    }
-                }else{
-                    displayVal += numButton[i].value;
-                    inputText.textContent = displayVal;
-                }
-            }
+                numButtonInput(numButton[i].value);
        });
     }
 
+//NUMBER BUTTONS KEYBOARD LISTENER(KEYBOARD SUPPORT)
+    document.addEventListener('keydown', (event) => {
+        // Check if the pressed key matches the number button values
+        for (let i = 0; i < numButton.length; i++) {
+          if (event.key === numButton[i].value) {
+            numButtonInput(numButton[i].value);
+            break;
+          }
+        }
+      });
 
 //OPERATION BUTTONS EVENT LISTENERS
-    for(let i=0; i<opButton.length;i++){
-        opButton[i].addEventListener('click',function () {
-            if(state==1){
-                num1 = displayVal;
-                state=2;
-            }
-            if(state == 2){
-                displayVal = opButton[i].value;
-                operator = opButton[i].value;
-                inputText.textContent = displayVal;
-                resNum=true;
-            }
+for(let i=0; i<opButton.length;i++){
+    opButton[i].addEventListener('click',function () {
+        opButtonInput(opButton[i].value);
+   });
+}
 
-            if(state==3){
-
-                if(resNum ==false){
-                    num2 = displayVal;
-                    num1 = operate(num1,num2,operator);
-                    inputText.textContent = num1;
-                }
-                if(opButton !="="){
-                    displayVal = opButton[i].value;
-                    operator = opButton[i].value;
-                    resNum = true;
-                }
-            }
-       });
+//OPERATION BUTTONS KEYBOARD LISTENER(KEYBOARD SUPPORT)
+document.addEventListener('keydown', (event) => {
+    // Check if the pressed key matches the operation button values
+    for (let i = 0; i < opButton.length; i++) {
+      if (event.key === opButton[i].value) {
+        opButtonInput(opButton[i].value);
+        break;
+      }
     }
+});
 
 
 //CLEAR BUTTON EVENT LISTENER
@@ -118,7 +78,80 @@ let delButton = document.getElementById("delButton");
      })
 
 
-//FUNCTIONS
+
+//FUNCTIONNNS-----------------------------------------------------
+
+//NUMBER BUTTON INPUT FUNCTION
+function numButtonInput(value){
+    if (resNum) {
+        operator = displayVal;
+        displayVal = '';
+        inputText.textContent = '';
+        resNum = false;
+        oneDeci = false;
+        state = 3;
+      }
+      if (state == 0) {
+        state = 1;
+      }
+      if (state == 1) {
+        // only allows one decimal point
+        if (value === '.') {
+          if (oneDeci === false) {
+            displayVal += value;
+            inputText.textContent = displayVal;
+            oneDeci = true;
+          }
+        } else {
+          displayVal += value;
+          inputText.textContent = displayVal;
+        }
+      }
+    
+      if (state == 3) {
+        // only allows one decimal point
+        if (value === '.') {
+          if (oneDeci === false) {
+            displayVal += value;
+            inputText.textContent = displayVal;
+            oneDeci = true;
+          }
+        } else {
+          displayVal += value;
+          inputText.textContent = displayVal;
+        }
+      }
+}
+
+//OPERATION BUTTON INPUT FUNCTION
+function opButtonInput(value){
+    if (state == 1) {
+        num1 = displayVal;
+        state = 2;
+      }
+      if (state == 2) {
+        displayVal = value;
+        operator = value;
+        inputText.textContent = displayVal;
+        resNum = true;
+      }
+    
+      if (state == 3) {
+        if (!resNum) {
+          num2 = displayVal;
+          num1 = operate(num1, num2, operator);
+          inputText.textContent = num1;
+        }
+        if (value !== '=') {
+          displayVal = value;
+          operator = value;
+          resNum = true;
+        }
+      }
+}
+
+
+//CHOOSE OPERATOR FUNCTION
 function operate(num1,num2,operator) {
 
     let result; 
