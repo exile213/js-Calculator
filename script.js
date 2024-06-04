@@ -8,10 +8,10 @@ let prevInput;
 
 //STATE VARIABLES
 let state=0;
-let resNum = false;
-let oneDeci = false;
-let nextRun = false;
-let didEquals = false;
+let resNum = false; //State variable for resetting input text content
+let oneDeci = false; //state variable for only one decimal
+let nextRun = false; // state variable after first operation is done
+let didEquals = false; // state variable for performing equals
 
 //HTML ELEMENT VARIABLES
 let inputText = document.getElementById('inputText');
@@ -134,6 +134,7 @@ function numButtonInput(value){
         prevInput.textContent = displayArray.join(" ");
       }
 }
+
 
 //OPERATION BUTTON INPUT FUNCTION
 function opButtonInput(value){
