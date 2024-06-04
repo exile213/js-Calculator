@@ -39,12 +39,14 @@ html,body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color:rgb(248, 240, 124);
+    background:url("bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    
 }
 /* Set core body defaults */
 body {
   line-height: 1.5;
-  background:rgb(248, 240, 124);
 }
 /* Set shorter line heights on headings and interactive elements */
 h1, h2, h3, h4,
@@ -79,8 +81,8 @@ textarea:not([rows]) {
 .calcuContainer{
     width:350px;
     height:570px;
-    background:rgb(248, 194, 124);
-    border: black 2px solid;
+    background:#242734;
+    border: #959597 5px solid;
     border-radius: 20px;
     padding:20px;
     overflow: hidden;
@@ -93,10 +95,10 @@ textarea:not([rows]) {
 }
 
 .titleText{ 
-    margin-bottom:10px;
-    margin-top:5px;
-    font-size:25px;
-    font-weight: 800;
+   color: #c0c1ca;
+    margin-top:2px;
+    font-size:35px;
+    font-weight: 900;
     width:100%;
     text-align: center;
 }
@@ -120,7 +122,7 @@ textarea:not([rows]) {
     border:black 3px solid;
     padding:10px;
     text-align: end;
-    background: white;
+    background: #d0dde0;
 }
 
 #inputText{
@@ -151,20 +153,42 @@ textarea:not([rows]) {
   grid-column-end: 5;
 
 }
-.num-buttons,.clear-button,.op-buttons,.del-button{
-    background: rgb(226, 225, 225);
+.num-buttons,.op-buttons{
+    color:whitesmoke;
     text-align: center;
     border-radius: 20px;
     font-size: 25px;
     width:65px;
     height: 65px;
+    font-weight: 600;
+}
+
+.num-buttons{
+  background:  #25262c ;
+}
+
+.num-buttons:hover{
+  background:  #36373d ;
+}
+.op-buttons{
+  background: #4e4b52 ;
+}
+
+.op-buttons:hover{
+  background: #363438 ;
 }
 
 .clear-button, .del-button{
-  background: rgb(226, 225, 225);
+  background: #e08a5a;
   text-align: center;
   border-radius: 20px;
   font-size: 25px;
+  font-weight: 700;
   width:145px;
   height: 65px;
 }
+
+.clear-button:hover,.del-button:hover{
+  background: #ba714a;
+}
+
