@@ -131,6 +131,15 @@ textarea:not([rows]) {
   font-weight: bold;
 }
 
+.prevText{
+  flex-basis: 100%;
+  padding-top:1;
+  text-align: end;
+  font-size: 15px;
+  color:grey;
+  font-weight: bold;
+}
+
 
 .c-button{
     grid-column-start: 1;
